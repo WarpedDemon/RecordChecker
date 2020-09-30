@@ -103,10 +103,11 @@ for Domain in Domains:
         if AlreadyDone[itemCount - 1]:
             pass
         else:
-            if HostedOnCloudFlare:
-                MyData.append(str(itemCount) + "," + Domain + "," + new_DNS_Record + "," + new_NameServer)
-            else:
-                ClientData.append(str(itemCount) + "," + Domain + "," + new_DNS_Record + "," + new_NameServer)
+            if HasSPF:
+                if HostedOnCloudFlare:
+                    MyData.append(str(itemCount) + "," + Domain + "," + new_DNS_Record + "," + new_NameServer)
+                else:
+                    ClientData.append(str(itemCount) + "," + Domain + "," + new_DNS_Record + "," + new_NameServer)
 
         print(str(itemCount)+"/"+str(len(Domains)-1))
 
